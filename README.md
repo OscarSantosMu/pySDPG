@@ -6,51 +6,145 @@ pySDPG consists of a set of utilities that collect additional metadata from [SDP
 
 ## Table of contents
 
-1. [Conventions](#conventions)
-2. [Getting started](#getting-started)
-3. [Contributors](#contributors)
-
-## Conventions
-
-Type             |  Description
-:-------------------------:|:-------------------------:
-Branch naming convention  |   [DeepSource convention](https://deepsource.io/blog/git-branch-naming-conventions/)
-Commit convention         |   [Emoji-log](https://github.com/ahmadawais/Emoji-Log)
+1. [Getting started](#getting-started)
+2. [Project structure](#project-structure)
+3. [Docs](#docs)
+4. [Contributing](#contributing)
+5. [Contributors](#contributors)
 
 ## Getting started
 
-Clone the repo
+### Clone the repo
+
 ```
-git clone https://github.com/username/reponame.git && cd reponame
+git clone https://github.com/OscarSantosMu/pySDPG.git && cd pySDPG
 ```
 
-Create a Python virtual environment, either with virtualenv or conda.
+### Create a Python virtual environment
+
+In this example, the Python virtual environment it is called *env* but you could call it differently. If you use a different name make sure you add it to the [.gitignore](.gitignore).
+
+Create it with venv, virtualenv or conda.
+
+<details><summary><b>Show venv instructions</b></summary>
+
+```
+python -m venv env
+```
+
+where *env* is the name of the virtual environment.
+</details>
+
+<details><summary><b>Show virtualenv instructions</b></summary>
+
 ```
 pip install virtualenv
 ```
 ```
-virtualenv sdpgenv –p <Python interpreter path>
+virtualenv env
 ```
 
-In this example, the env it is called sdpgenv but you could call it differently.
+where *env* is the name of the virtual environment.
+</details>
 
-Activate the virtual environment
+<details><summary><b>Show conda instructions</b></summary>
+
 ```
-.\sdpgenv\Scripts\activate
+conda create --no-default-packages --name env
 ```
 
-Install requirements.txt
+where *env* is the name of the virtual environment.
+</details>
+
+### Activate the Python virtual environment
+
+From the root of the project (where this README is located)
+
+<details><summary><b>With venv or virtualenv</b></summary>
+<details><summary><b>Windows</b></summary>
+
+```
+.\env\Scripts\activate
+```
+where *env* is the name of the virtual environment.
+</details>
+<details><summary><b>Linux</b></summary>
+
+```
+source env/bin/activate
+```
+where *env* is the name of the virtual environment.
+</details>
+
+</details>
+
+<details><summary><b>With conda</b></summary>
+
+```
+conda activate ./env
+```
+
+where *env* is the name of the virtual environment.
+</details>
+
+### Install requirements.txt
 
 ```
 pip install -r requirements.txt
 ```
 
+## Project structure
+
+```
+src/
+├───scripts
+├───sdpgairtable
+│   └───__init.py__
+│   └───module1.py__
+│   └───module2.py__
+│   └───...
+│   └───moduleN.py__
+├───sdpgimport
+│   └───__init.py__
+│   └───module1.py__
+│   └───module2.py__
+│   └───...
+│   └───moduleN.py__
+├───sdpglicenses
+│   └───__init.py__
+│   └───module1.py__
+│   └───module2.py__
+│   └───...
+│   └───moduleN.py__
+├───sdpgutilities
+│   └───__init.py__
+│   └───module1.py__
+│   └───module2.py__
+│   └───...
+│   └───moduleN.py__
+└───__init.py__
+```
+
+While using pySDPG package without a package manager, scripts must be placed at the src folder, since they use the subpackages (e.g. sdpgairtable). 
+
+For now, all of the Python scripts where placed at the scripts folder to organize the repository and each of them has commented code to execute them without import issues.
+
+When the package is released, there will be no conflicts in finding the modules in the local environment path.
+
+
+## Docs
+
+To review documentation about the project, follow the steps mentioned in the [Getting started](#getting-started) section and then within the root directory run.
+
+```
+pdoc src
+```
+
+This command opens a self-hosted server in your machine with the docs.
+
 ## Contributing
 
-1. Open an Issue to discuss your contribution.
-2. Create a new branch using [DeepSource convention](https://deepsource.io/blog/git-branch-naming-conventions/)
-3. Commit your changes with [Emoji-log convention](https://github.com/ahmadawais/Emoji-Log).
-4. Open a PR linked to your issue. 
+Please review specific steps, code styling, formatting and conventions in [Contributing.md](CONTRIBUTING.md)
 
 ## Contributors
 
